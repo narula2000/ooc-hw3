@@ -34,7 +34,7 @@ public class DBService {
      */
     public DBService() throws SQLException, ClassNotFoundException {
         this.jdbcDriverStr = "com.mysql.cj.jdbc.Driver";
-        this.jdbcURL = "jdbc:mysql://localhost/oochw3"
+        this.jdbcURL = "jdbc:mysql://localhost/oochw3?"
                 + "user=vic&password=1234";
         Class.forName(jdbcDriverStr);
         connection = DriverManager.getConnection(jdbcURL);
@@ -56,12 +56,12 @@ public class DBService {
                         + "lastname varchar(200), DOB date)");
 
         resultSet = statement
-                .executeQuery("select * from oochw3webapp.user_table;");
+                .executeQuery("select * from oochw3.user_table;");
 
         if (!resultSet.next()) {
             String hashed = BCrypt.hashpw("admin", BCrypt.gensalt());
             preparedStatement = connection
-                    .prepareStatement("insert into oochw3webapp.user_table "
+                    .prepareStatement("insert into oochw3.user_table "
                             + "values ('admin','"
                             + hashed
                             + "','admin','admin','2020/07/17')");
@@ -76,7 +76,7 @@ public class DBService {
     public void readData() throws Exception {
         try {
             resultSet = statement
-                    .executeQuery("select * from oochw3webapp.user_table;");
+                    .executeQuery("select * from oochw3.user_table;");
             getResultSet(resultSet);
         } finally {
             close();

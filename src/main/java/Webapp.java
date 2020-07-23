@@ -11,7 +11,7 @@ public final class Webapp {
      */
     public static void main(final String[] args) throws Exception {
 
-        final int port = 80;
+        final int port = 8082;
         // Create webapp(dir) if it doesnt exist.
         File dirBase = new File("src/main/webapp/");
         dirBase.mkdir();
@@ -26,7 +26,7 @@ public final class Webapp {
     }
 
     /**
-     * Empty constructor, to unable class instantiation.
+     * Empty constructor, to disable class instantiation.
      */
     private Webapp() {
     }

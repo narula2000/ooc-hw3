@@ -2,10 +2,10 @@ package component;
 
 import service.SecurityService;
 
-public interface Router {
+public interface Route {
 
     /**
-     * Get map of the route,
+     * Map the route.
      * @return - String.
      */
     String getMapping();
