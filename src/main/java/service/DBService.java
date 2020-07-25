@@ -212,6 +212,7 @@ public class DBService {
                         +  username + "';");
         resultSet.next();
 
+
         String firstName = resultSet.getString(UserTable.FIRSTNAME.toString());
         user.setFirstName(firstName);
         resultSet = statement
@@ -227,7 +228,6 @@ public class DBService {
         resultSet.next();
         String dob = resultSet.getString(UserTable.DOB.toString());
         user.setDob(dob);
-
         return user;
     }
 
@@ -255,10 +255,10 @@ public class DBService {
      */
     public void updatePassword(final String newPassword, final String username)
             throws SQLException {
-        String hased = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        String hashpw = BCrypt.hashpw(newPassword, BCrypt.gensalt());
         statement
                 .execute("update user_table set password = '"
-                        + hased
+                        + hashpw
                         + "' where username = '"
                         + username + "';");
     }

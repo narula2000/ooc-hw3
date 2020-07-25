@@ -1,18 +1,13 @@
 <html>
-<head>
-    <style>
-        body {
-            background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
-        }
-    </style>
+<head class="body">
     <title>Edit page</title>
 </head>
 <div align="center">
 <body>
 <h1> Home Page </h1>
-<h2>Welcome, ${user.getUsername()}</h2>
-<h2>first name : ${user.getFirstName()}</h2>
-<h2>last name : ${user.getLastName()}</h2>
+<h2>${user.getUsername()}</h2>
+<h2>First Name : ${user.getFirstName()}</h2>
+<h2>Last Name : ${user.getLastName()}</h2>
 <h2>Date of Birth : ${user.getDob()}</h2>
 
 <p>Register new user here </p>
@@ -61,4 +56,11 @@
 </body>
 </div>
 </html>
+
+
+    <style>
+        .body {
+            background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
+        }
+    </style>
 

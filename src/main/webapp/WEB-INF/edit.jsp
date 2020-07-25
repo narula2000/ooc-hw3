@@ -1,10 +1,5 @@
 <html>
-<head>
-    <style>
-        body {
-            background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
-        }
-    </style>
+<head class="body">
     <title>Edit page</title>
 </head>
 <div align="center">
@@ -58,3 +53,10 @@
 </body>
 </div>
 </html>
+
+
+    <style>
+        .body {
+            background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
+        }
+    </style>

@@ -1,14 +1,10 @@
 <html>
-<head>
-    <style>
-        body {
-            background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
-        }
-    </style>
+<head class="body">
     <title>Edit page</title>
 </head>
 <body>
-<h1 style="text-align:center">Welcome!!!</h1>
+<h1 style="text-align:center">Hello!?!</h1>
+
 <div align="center">
 <form action="/login" method="post">
     Username:<br/>
@@ -23,3 +19,9 @@
 </div>
 </body>
 </html>
+
+<style>
+    .body {
+        background-image: url("https://image.freepik.com/free-vector/pattern-abstract-hand-drawn-collection_23-2148591063.jpg");
+    }
+</style>

@@ -27,9 +27,9 @@ public class LoginServlet extends HttpServlet {
             final HttpServletRequest request,
             final HttpServletResponse response)
                 throws ServletException, IOException {
-        RequestDispatcher rd = request
+        RequestDispatcher dispatcher = request
                 .getRequestDispatcher("WEB-INF/login.jsp");
-        rd.include(request, response);
+        dispatcher.include(request, response);
     }
 
     /**
@@ -53,9 +53,9 @@ public class LoginServlet extends HttpServlet {
                 } else {
                     String error = "Wrong username or password.";
                     request.setAttribute("error", error);
-                    RequestDispatcher rd = request
+                    RequestDispatcher dispatcher = request
                             .getRequestDispatcher("WEB-INF/login.jsp");
-                    rd.include(request, response);
+                    dispatcher.include(request, response);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -63,9 +63,9 @@ public class LoginServlet extends HttpServlet {
         } else {
             String error = "Username or password is missing.";
             request.setAttribute("error", error);
-            RequestDispatcher rd = request
+            RequestDispatcher dispatcher = request
                     .getRequestDispatcher("WEB-INF/login.jsp");
-            rd.include(request, response);
+            dispatcher.include(request, response);
         }
     }
 

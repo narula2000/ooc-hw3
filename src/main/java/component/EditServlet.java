@@ -47,18 +47,19 @@ public class EditServlet extends HttpServlet {
         if (authorized) {
             String username = (String) req.getSession()
                     .getAttribute("editing_user");
-            try {
-                UserObj user = databaseService.getUser(username);
-                req.setAttribute("username", user.getUsername());
-                req.setAttribute("first_name", user.getFirstName());
-                req.setAttribute("last_name", user.getLastName());
-                req.setAttribute("dob", user.getDob());
+          try {
+              UserObj user = databaseService.getUser(username);
+              req.setAttribute("username", user.getUsername());
+              req.setAttribute("first_name", user.getFirstName());
+              req.setAttribute("last_name", user.getLastName());
+              req.setAttribute("dob", user.getDob());
 
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/edit.jsp");
-            rd.include(req, resp);
+          } catch (SQLException | ClassNotFoundException e) {
+              e.printStackTrace();
+          }
+          RequestDispatcher dispatcher = req
+                  .getRequestDispatcher("WEB-INF/edit.jsp");
+          dispatcher.include(req, resp);
         } else {
             resp.sendRedirect("/login");
         }
@@ -76,7 +77,8 @@ public class EditServlet extends HttpServlet {
             final HttpServletRequest req,
             final HttpServletResponse resp)
             throws ServletException, IOException {
-        String username = (String) req.getSession().getAttribute("editing_user");
+        String username = (String) req.getSession()
+                .getAttribute("editing_user");
         if (req.getParameter("edit_username") != null) {
             String newUsername = req.getParameter("new_username");
             try {
@@ -104,9 +106,9 @@ public class EditServlet extends HttpServlet {
                 }
             }
         } else if (req.getParameter("edit_first_name") != null) {
-            String newFirstname = req.getParameter("new_first_name");
+            String newFirstName = req.getParameter("new_first_name");
             try {
-                databaseService.updateFirstName(newFirstname, username);
+                databaseService.updateFirstName(newFirstName, username);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -140,8 +142,9 @@ public class EditServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/edit.jsp");
-        rd.include(req, resp);
+        RequestDispatcher dispatcher = req
+                .getRequestDispatcher("WEB-INF/edit.jsp");
+        dispatcher.include(req, resp);
     }
 
     /**

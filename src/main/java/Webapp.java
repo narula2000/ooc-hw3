@@ -1,5 +1,8 @@
+import component.ServletRouter;
+import org.apache.catalina.Context;
 import service.DBService;
 import org.apache.catalina.startup.Tomcat;
+import service.SecurityService;
 
 import java.io.File;
 
@@ -9,20 +12,35 @@ public final class Webapp {
      * Runs the webapp.
      * @param args - Empty
      */
-    public static void main(final String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-        final int port = 8082;
-        // Create webapp(dir) if it doesnt exist.
-        File dirBase = new File("src/main/webapp/");
-        dirBase.mkdir();
-        // Configure tomcat port and initiate it.
+
+        final int port = 80;
+        // FInd base dir base of web app
+        File docBase = new File("src/main/webapp/");
+        docBase.mkdirs();
+
+        // Set port for sever
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(port);
 
-        // Connect with the data base and read it's data.
+        // Create DB
         DBService dbService = new DBService();
         dbService.readData();
 
+        // Set up security
+        SecurityService securityService = new SecurityService();
+        ServletRouter servletRouter = new ServletRouter();
+        servletRouter.setSecurityService(securityService);
+
+        // Initialise router.
+        Context ctx;
+        ctx = tomcat.addWebapp("", docBase.getAbsolutePath());
+        servletRouter.init(ctx);
+
+        // Start sever.
+        tomcat.start();
+        tomcat.getServer().await();
     }
 
     /**
